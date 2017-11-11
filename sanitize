@@ -1,0 +1,3 @@
+del(.created)
+del(.id)
+del(.modified)
