@@ -1,3 +1,4 @@
+![GitHub code size in bytes](https://img.shields.io/badge/LOC-98-brightgreen.svg)
 # har.test
 ## API integration test runner and reporter using .har files
 
