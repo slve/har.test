@@ -1,6 +1,23 @@
-![GitHub code size in bytes](https://img.shields.io/badge/LOC-98-brightgreen.svg)
+![GitHub code size in bytes](https://img.shields.io/badge/LOC-99-brightgreen.svg)
 # har.test
 ## API integration test runner and reporter using .har files
+
+### How it works
+```
+./main.sh http://your.host
+finds queries in all .har files in the folder
+which have http://your.host in their target
+builds queries and runs them                 -> saves responses -> compares -> reports -> logs failures
+
+*.har         -> ./queries.sh                   ./responses        ./expected             ./log
+...other.host...
+...your.host...  curl -XPOST ...1 -d '{..1}'    {"a":1}            {"a":1}     Pass       Diff at line: 2. query: curl '...'
+...your.host...  curl -XPOST ...2 -d '{..2}'    {"b":1}            {"b":2}     Fail       Response: { "userId": 1, ... }
+...your.host...                                                                           Expected: { "userId": 2, ... }
+...other.host...
+
+compare does sanitization both on ./responses and ./expected using ./sanitize
+```
 
 ### Intro
 1. Grab your favorite web browser save all the network traffic you have recorded in you current tab; and copy your [.har](https://en.wikipedia.org/wiki/.har) file to this folder.
@@ -16,7 +33,7 @@
 * The output will go to stdout so you could pipe it into a file for example, but there is a more detailed `./log` file. Also, the exit code can be 0 if all test passed, or 1 if any of the tests have failed, so is compatible with the standard [CI](https://en.wikipedia.org/wiki/Continuous_integration) tools.
 
 ### Goal
-* The original goal was an easy setup [integration test](https://en.wikipedia.org/wiki/Integration_testing) runner and reporter using [.har](https://en.wikipedia.org/wiki/.har) file.
+* The original goal was to create an easy setup [integration test](https://en.wikipedia.org/wiki/Integration_testing) runner and reporter using [.har](https://en.wikipedia.org/wiki/.har) file.
 
 ### Advantages
 * Small set of dependencies: some common [GNU](https://www.gnu.org/) commands plus [jq](https://stedolan.github.io/jq/),
