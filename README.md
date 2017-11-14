@@ -9,7 +9,8 @@
 4. On the first run har.test will generate the `./expected` file based on your .har files; `./expected` will be your snapshot but you can edit it; is just simply text.
 5. Discover the [jq tutorial](https://stedolan.github.io/jq/tutorial/) and the local `./sanitize` file here in the repo, which serves not only as an example but har.test actively uses it.
 6. Discover the source code [main.sh](https://github.com/slve/har.test/blob/master/main.sh).
-7. Give it a star and fork it, create your private clone, add your `.gitignore` to your needs and link it into your [CI](https://en.wikipedia.org/wiki/Continuous_integration) flow.
+7. Tip: Don't forget to check out [json.test](https://github.com/slve/json.test) a similar tool for when you don't have .har files.
+8. Give it a star and fork it, create your private clone, add your `.gitignore` to your needs and link it into your [CI](https://en.wikipedia.org/wiki/Continuous_integration) flow.
 
 ### Output
 * The output will go to stdout so you could pipe it into a file for example, but there is a more detailed `./log` file. Also, the exit code can be 0 if all test passed, or 1 if any of the tests have failed, so is compatible with the standard [CI](https://en.wikipedia.org/wiki/Continuous_integration) tools.
@@ -38,3 +39,6 @@
 * https://github.com/mrichman/hargo
 * http://andydude.github.io/harcurl/
 * https://har.tech/
+
+### Similar tool without .har
+* https://github.com/slve/json.test

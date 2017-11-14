@@ -26,7 +26,7 @@ log(){ tee -a log; echo >> ./log; }
 
 # actual run
 # cleanup + init
-[ -r ./queries.sh ] && rm ./queries.sh ./responses ./log 2>/dev/null
+rm ./queries.sh ./responses ./log 2>/dev/null
 touch ./queries.sh && chmod +x ./queries.sh
 
 # common jq snippet to filter relevant entries from your .har files
@@ -62,7 +62,7 @@ for har in *.har; do
   ' $har >> ./queries.sh
 done
 
-# run the queries and generate ./repsonses
+# run the queries and generate ./responses
 ./queries.sh 2>/dev/null > ./responses
 
 # go through each response and compare with the expected
